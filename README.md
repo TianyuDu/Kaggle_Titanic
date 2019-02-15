@@ -1,2 +1,2 @@
-# Kaggle_Titanic
-Repository for Kaggle Titanic Prediction
+# Titanic: Machine Learning from Disaster
+![Kaggle Link](https://www.kaggle.com/c/titanic/data)
