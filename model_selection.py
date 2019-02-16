@@ -5,7 +5,8 @@ Model selection and hyper-parameter search
 import copy
 import itertools
 import os
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Iterable
+import model_builder
 
 
 def gen_hparam_set(
@@ -54,4 +55,23 @@ def gen_hparam_set(
     return gen
 
 
-
+def grid_search(
+    param_set: Iterable[dict],
+    X_train, X_test,
+    y_train, y_test
+)-> List[dict]:
+    candidates = list()
+    for param in param_set:
+        c = model_builder.Classifier(param)
+        c.compile_model()
+        c.fit(X_train, y_train)
+        auc = c.evaluate_auc(X_test, y_test)
+        accuracy = c.model.evaluate(X_test, y_test)[1]
+        record = {
+            "param": param,
+            "test_auc": auc,
+            "test_acc": accuracy
+        }
+        candidates.append(record)
+    candidates.sort(key=lambda x: x["test_auc"])
+    return candidates
