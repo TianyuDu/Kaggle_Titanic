@@ -47,11 +47,11 @@ class Classifier():
             metrics=[tf.keras.metrics.Accuracy]
         )
 
-    def fit(self, X_train, y_train):
+    def fit(self, X_train, y_train, validation_split=0.1):
         self.X_train, self.y_train = X_train, y_train
         self.model.fit(
             X_train, y_train,
-            validation_split=0.1,
+            validation_split=validation_split,
             verbose=0,
             epochs=self.epochs
         )
@@ -60,6 +60,8 @@ class Classifier():
         pred_prob = self.model.predict_proba(X_test)
         pred_class = self.model.predict_classes(X_test)
         roc_auc = self.model_eval.auc(y_test, pred_prob[:, 0], 0)
+        return roc_auc
+
 
 if __name__ == "__main__":
     c = Classifier()
