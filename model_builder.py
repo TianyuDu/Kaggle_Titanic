@@ -20,10 +20,11 @@ SAMPLE_PARAM = {
 
 class Classifier():
     def __init__(self, param: dict = SAMPLE_PARAM) -> None:
-        print("Reading parameters...")
+        print("Loading Parameters...")
         self.__dict__.update(param)
 
     def build_model(self):
+        print("Building Model Layers...")
         layers = [
             tf.keras.layers.Dense(x, activation="relu")
             for x in self.neurons
@@ -38,10 +39,19 @@ class Classifier():
         )
 
     def compile_model(self):
+        print("Compiling Model...")
         self.model.compile(
             optimizer=tf.keras.optimizers.Adam(learning_rate=self.lr),
             loss=tf.keras.losses.sparse_categorical_crossentropy,
             metrics=[tf.keras.metrics.Accuracy]
+        )
+
+    def fit(self, X_train, y_train):
+        self.model.fit(
+            X_train, y_train,
+            validation_split=0.1,
+            verbose=0,
+            epochs=self.epochs
         )
 
 
