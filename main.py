@@ -21,7 +21,7 @@ if __name__ == "__main__":
     # Prediction with Keras based model
     model = tf.keras.Sequential()
     model.add(tf.keras.layers.Dense(128, activation="relu"))
-    # model.add(tf.keras.layers.Dense(256, activation="relu"))
+    model.add(tf.keras.layers.Dense(256, activation="relu"))
     # model.add(tf.keras.layers.Dense(256, activation="relu"))
     model.add(tf.keras.layers.Dense(2, activation="softmax"))
     model.compile(optimizer="adam",
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     model.fit(
         X_train, y_train,
         validation_split=0.1,
-        verbose=2,
+        verbose=0,
         epochs=150)
     print("Test set evaluation")
     model.evaluate(X_test, y_test)
@@ -39,5 +39,5 @@ if __name__ == "__main__":
     pred_class = model.predict_classes(X_test)
     roc_auc = model_eval.auc(y_test, pred_prob[:, 0], 0)
     print(f"AUC = {roc_auc}")
-    print(f"Train set density: {sum(y_train) / len(y_train)}")
-    print(f"Test set density: {sum(y_test) / len(y_test)}")
+    print(f"Train set density: {np.mean(y_test)}")
+    print(f"Test set density: {np.mean(y_test)}")

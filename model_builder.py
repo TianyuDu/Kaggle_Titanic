@@ -6,6 +6,7 @@ Model builders are wrapped into class and takes parameter dictionary as input.
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+import model_eval
 
 
 SAMPLE_PARAM = {
@@ -47,6 +48,7 @@ class Classifier():
         )
 
     def fit(self, X_train, y_train):
+        self.X_train, self.y_train = X_train, y_train
         self.model.fit(
             X_train, y_train,
             validation_split=0.1,
@@ -54,6 +56,10 @@ class Classifier():
             epochs=self.epochs
         )
 
+    def evaluate_auc(self, X_test, y_test):
+        pred_prob = self.model.predict_proba(X_test)
+        pred_class = self.model.predict_classes(X_test)
+        roc_auc = self.model_eval.auc(y_test, pred_prob[:, 0], 0)
 
 if __name__ == "__main__":
     c = Classifier()
