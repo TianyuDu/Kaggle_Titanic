@@ -23,6 +23,5 @@ if __name__ == "__main__":
     )
 
     pipeline_optimizer.fit(X_train, y_train)
-    print(pipeline_optimizer.score(X_test, y_test))
-    pipeline_optimizer.export("tpot_test.py")
-    
+    # print(pipeline_optimizer.score(X_test, y_test))
+    # pipeline_optimizer.export("tpot_test.py")
