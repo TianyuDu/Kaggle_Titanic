@@ -61,7 +61,8 @@ def grid_search(
     y_train, y_test
 )-> List[dict]:
     candidates = list()
-    for param in param_set:
+    total = len(param_set)
+    for i, param in enumerate(param_set):
         c = model_builder.Classifier(param)
         c.compile_model()
         c.fit(X_train, y_train)
@@ -73,5 +74,9 @@ def grid_search(
             "test_acc": accuracy
         }
         candidates.append(record)
+        best_auc = max(x["test_auc"] for x in record)
+        best_acc = max(x["test_acc"] for x in record)
+        print(f"HP Searching: [{i+1}/{total}].")
+        print(f"Best AUC: {best_auc}, best ACC: {best_acc}")
     candidates.sort(key=lambda x: x["test_auc"])
     return candidates
