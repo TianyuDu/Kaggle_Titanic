@@ -9,14 +9,14 @@ import pandas as pd
 
 def load_data(file_dir: str) -> pd.DataFrame:
     raw = pd.read_csv(file_dir)
-    df = raw.drop(columns=["PassengerId", "Name",
-                            "Ticket", "Cabin", "Embarked"])
-    df["Cabin"] = pd.notna(raw["Cabin"]).astype(np.float32)
-    df.dropna(inplace=True)
+    df = raw.drop(columns=[
+        "PassengerId", "Name", "Ticket", "Embarked"])
     return df
 
 
 def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
+    df["Cabin"] = pd.isna(df["Cabin"]).astype(np.float32)  # 1=
+    df.dropna(inplace=True)
     df["Sex"] = (df["Sex"] == "female")  # 0=male; 1=Female
     X = df.drop(columns=["Survived"]).values.astype(np.float64)
     y = df["Survived"].values
