@@ -15,7 +15,7 @@ def load_data(file_dir: str) -> pd.DataFrame:
 
 
 def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
-    df["Cabin"] = pd.isna(df["Cabin"]).astype(np.float32)  # 1=
+    df["Cabin"] = pd.notna(df["Cabin"]).astype(np.float32)  # 1=have cabin
     df.dropna(inplace=True)
     df["Sex"] = (df["Sex"] == "female")  # 0=male; 1=Female
     X = df.drop(columns=["Survived"]).values.astype(np.float64)
