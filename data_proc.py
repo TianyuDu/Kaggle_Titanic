@@ -10,7 +10,7 @@ import pandas as pd
 def load_data(file_dir: str) -> pd.DataFrame:
     raw = pd.read_csv(file_dir)
     df = raw.drop(columns=["PassengerId", "Name",
-                           "Ticket", "Cabin", "Embarked"])
+                            "Ticket", "Cabin", "Embarked"])
     df["Cabin"] = pd.notna(raw["Cabin"]).astype(np.float32)
     df.dropna(inplace=True)
     return df
