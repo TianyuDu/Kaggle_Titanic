@@ -15,14 +15,17 @@ def load_data(file_dir: str) -> pd.DataFrame:
 
 
 def create_features(df: pd.DataFrame):
-    df["Cabin"] = pd.notna(df["Cabin"]).astype(np.float32)  # 1=have cabin
+    df["Cabin"] = pd.notna(df["Cabin"])  # True=have cabin
     df.dropna(inplace=True)
-    df["Sex"] = (df["Sex"] == "female")  # 0=male; 1=Female
+    df["Sex"] = (df["Sex"] == "female")  # False=male; True=Female
     return df
 
 
 def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
-    X = df.drop(columns=["Survived"]).values.astype(np.float64)
+    """
+    Extract data as numpy array.
+    """
+    X = df.drop(columns=["Survived"]).values.astype(np.float32)
     y = df["Survived"].values
     y = y.reshape(-1, 1)
     return X, y
