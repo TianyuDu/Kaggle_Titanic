@@ -17,7 +17,7 @@ import random
 
 PARAM_SRC_TEST = {
     "epochs": [50 * x for x in range(1, 3)],
-    "num_features": 6,
+    "num_features": 7,
     "num_classes": 2,  # number of label classes
     "neurons": [
         (64, 128),
@@ -29,7 +29,7 @@ PARAM_SRC_TEST = {
 
 PARAM_SRC = {
     "epochs": [50 * x for x in range(1, 5)],
-    "num_features": 6,
+    "num_features": 7,
     "num_classes": 2,  # number of label classes
     "neurons": [
         (64, 128),
