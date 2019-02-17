@@ -16,14 +16,14 @@ import random
 
 
 PARAM_SRC_TEST = {
-    "epochs": [50 * x for x in range(1, 3)],
+    "epochs": [50 * x for x in range(1, 2)],
     "num_features": 7,
     "num_classes": 2,  # number of label classes
     "neurons": [
         (64, 128),
         (64, 128, 256)
     ],
-    "drop_out": [0.1 * x for x in range(1, 3)],
+    "drop_out": [0.1 * x for x in range(1, 2)],
     "lr": [0.01, 0.03]
 }
 
