@@ -10,7 +10,7 @@ import pandas as pd
 def load_data(file_dir: str) -> pd.DataFrame:
     raw = pd.read_csv(file_dir)
     df = raw.drop(columns=[
-        "PassengerId", "Name", "Ticket", "Embarked"])
+        "PassengerId", "Name", "Ticket"])
     return df
 
 
@@ -21,6 +21,9 @@ def create_features(raw: pd.DataFrame):
     df.dropna(inplace=True)
     df["Sex"] = (df["Sex"] == "female").astype(np.float32)
     # False=male; True=Female
+    df = df.fillna({"Embarked": "S"})
+    embarked_mapping = {'S': 1, 'C': 2, 'Q': 3}
+    df['Embarked'] = df['Embarked'].map(embarked_mapping)
     return df
 
 
@@ -28,6 +31,7 @@ def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
     """
     Extract data into feature array and target array.
     """
+    df = create_features(df)
     X = df.drop(columns=["Survived"]).values.astype(np.float32)
     y = df["Survived"].values
     y = y.reshape(-1, 1)
