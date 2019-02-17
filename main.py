@@ -12,6 +12,7 @@ import model_eval
 import model_selection
 from typing import List
 from datetime import datetime
+import random
 
 
 PARAM_SRC_TEST = {
@@ -60,6 +61,7 @@ if __name__ == "__main__":
         X, y, test_size=0.2, shuffle=True)
 
     PARAM_SET = model_selection.gen_hparam_set(PARAM_SRC)
+    random.shuffle(PARAM_SET)
     candidates = model_selection.grid_search(
         PARAM_SET,
         X_train, X_test,
