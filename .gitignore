@@ -10,3 +10,4 @@ genetic/__pycache__/genetic_hpt.cpython-36.pyc
 genetic/__pycache__/genetic_optimizer.cpython-36.pyc
 genetic/__pycache__/optimizer.cpython-36.pyc
 genetic/__pycache__/tuner.cpython-36.pyc
+__pycache__/model_selection.cpython-36.pyc

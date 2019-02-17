@@ -20,12 +20,17 @@ SAMPLE_PARAM = {
 
 
 class Classifier():
-    def __init__(self, param: dict = SAMPLE_PARAM) -> None:
-        print("Loading Parameters...")
+    def __init__(self, param: dict=SAMPLE_PARAM, verbose=True) -> None:
+        self.v = verbose
+        if self.v:
+            print("Loading Parameters...")
         self.__dict__.update(param)
+        self._build_model()
+        self._compile_model()
 
-    def build_model(self):
-        print("Building Model Layers...")
+    def _build_model(self):
+        if self.v:
+            print("Building Model Layers...")
         layers = [
             tf.keras.layers.Dense(x, activation="relu")
             for x in self.neurons
@@ -39,12 +44,13 @@ class Classifier():
             tf.keras.layers.Dense(self.num_classes, activation="softmax")
         )
 
-    def compile_model(self):
-        print("Compiling Model...")
+    def _compile_model(self):
+        if self.v:
+            print("Compiling Model...")
         self.model.compile(
             optimizer=tf.keras.optimizers.Adam(learning_rate=self.lr),
             loss=tf.keras.losses.sparse_categorical_crossentropy,
-            metrics=[tf.keras.metrics.Accuracy]
+            metrics=["accuracy"]
         )
 
     def fit(self, X_train, y_train, validation_split=0.1):
@@ -59,7 +65,7 @@ class Classifier():
     def evaluate_auc(self, X_test, y_test):
         pred_prob = self.model.predict_proba(X_test)
         pred_class = self.model.predict_classes(X_test)
-        roc_auc = self.model_eval.auc(y_test, pred_prob[:, 0], 0)
+        roc_auc = model_eval.auc(y_test, pred_prob[:, 0], 0)
         return roc_auc
 
 
