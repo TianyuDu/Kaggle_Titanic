@@ -14,10 +14,14 @@ def load_data(file_dir: str) -> pd.DataFrame:
     return df
 
 
-def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
+def create_features(df: pd.DataFrame):
     df["Cabin"] = pd.notna(df["Cabin"]).astype(np.float32)  # 1=have cabin
     df.dropna(inplace=True)
     df["Sex"] = (df["Sex"] == "female")  # 0=male; 1=Female
+    return df
+
+
+def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
     X = df.drop(columns=["Survived"]).values.astype(np.float64)
     y = df["Survived"].values
     y = y.reshape(-1, 1)
