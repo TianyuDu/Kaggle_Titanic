@@ -14,10 +14,13 @@ def load_data(file_dir: str) -> pd.DataFrame:
     return df
 
 
-def create_features(df: pd.DataFrame):
-    df["Cabin"] = pd.notna(df["Cabin"])  # True=have cabin
+def create_features(raw: pd.DataFrame):
+    df = raw.copy()
+    df["Cabin"] = pd.notna(df["Cabin"]).astype(np.float32)
+    # True=have cabin
     df.dropna(inplace=True)
-    df["Sex"] = (df["Sex"] == "female")  # False=male; True=Female
+    df["Sex"] = (df["Sex"] == "female").astype(np.float32)
+    # False=male; True=Female
     return df
 
 
