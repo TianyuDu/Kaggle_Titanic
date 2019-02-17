@@ -1,0 +1,1 @@
+{'param': {'epochs': 150, 'num_features': 7, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.2, 'lr': 0.2}, 'test_auc': 0.5, 'test_acc': 0.5944056}

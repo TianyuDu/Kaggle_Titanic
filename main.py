@@ -13,6 +13,7 @@ import model_selection
 from typing import List
 from datetime import datetime
 import random
+import getpass
 
 
 PARAM_SRC_TEST = {
@@ -42,14 +43,24 @@ PARAM_SRC = {
     "lr": [0.01, 0.03, 0.1, 0.3]
 }
 
+PARAM_SINGLE = {
+    "epochs": 50,
+    "num_features": 7,
+    "num_classes": 2,  # number of label classes
+    "neurons": (64, 128),
+    "drop_out": 0.1,
+    "lr": 0.01
+}
+
 
 def save_result(candidates: List[dict]) -> None:
     now = str(datetime.now())
-    with open(f"./hps/{now}.txt", "w") as f:
+    user_name = getpass.getuser()
+    with open(f"./hps/{user_name}_{now}.txt", "w") as f:
         f.writelines(
             [str(r) + "\n" for r in candidates]
         )
-    print(f"Reseult written to ./hps/{now}.txt")
+    print(f"Reseult written to .//hps/{user_name}_{now}.txt")
 
 
 if __name__ == "__main__":
