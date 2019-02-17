@@ -29,7 +29,7 @@ def gen_hparam_set(
                 to search over learning_rate parameter,
                 set src_dict["learning_rate"] = [0.1, 0.03, 0.01] etc.
     Returns:
-        A list (iterable) with all combination of candidates in 
+        A list (iterable) with all combination of candidates in
             flexiable (to be searched) parameters.
     """
     gen = list()
@@ -63,20 +63,20 @@ def grid_search(
     candidates = list()
     total = len(param_set)
     for i, param in enumerate(param_set):
-        c = model_builder.Classifier(param)
-        c.compile_model()
+        c = model_builder.Classifier(param, verbose=False)
+
         c.fit(X_train, y_train)
         auc = c.evaluate_auc(X_test, y_test)
-        accuracy = c.model.evaluate(X_test, y_test)[1]
+        accuracy = c.model.evaluate(X_test, y_test, verbose=0)[1]
         record = {
             "param": param,
             "test_auc": auc,
             "test_acc": accuracy
         }
         candidates.append(record)
-        best_auc = max(x["test_auc"] for x in record)
-        best_acc = max(x["test_acc"] for x in record)
-        print(f"HP Searching: [{i+1}/{total}].")
-        print(f"Best AUC: {best_auc}, best ACC: {best_acc}")
+        best_auc = max(x["test_auc"] for x in candidates)
+        best_acc = max(x["test_acc"] for x in candidates)
+        print(f"HP Grid Searching: [{i+1}/{total}].")
+        print(f"[Test Set]Best AUC: {best_auc}, best ACC: {best_acc}")
     candidates.sort(key=lambda x: x["test_auc"])
     return candidates
