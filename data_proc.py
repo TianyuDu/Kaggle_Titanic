@@ -26,7 +26,7 @@ def create_features(raw: pd.DataFrame):
 
 def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
     """
-    Extract data as numpy array.
+    Extract data into feature array and target array.
     """
     X = df.drop(columns=["Survived"]).values.astype(np.float32)
     y = df["Survived"].values
