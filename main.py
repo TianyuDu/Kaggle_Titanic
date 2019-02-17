@@ -60,7 +60,7 @@ if __name__ == "__main__":
     (X_train, X_test, y_train, y_test) = train_test_split(
         X, y, test_size=0.2, shuffle=True)
 
-    PARAM_SET = model_selection.gen_hparam_set(PARAM_SRC)
+    PARAM_SET = model_selection.gen_hparam_set(PARAM_SRC_TEST)
     random.shuffle(PARAM_SET)
     candidates = model_selection.grid_search(
         PARAM_SET,
