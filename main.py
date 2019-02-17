@@ -42,6 +42,15 @@ PARAM_SRC = {
     "lr": [0.01, 0.03, 0.1, 0.3]
 }
 
+PARAM_SINGLE = {
+    "epochs": 50,
+    "num_features": 7,
+    "num_classes": 2,  # number of label classes
+    "neurons": (64, 128),
+    "drop_out": 0.1,
+    "lr": 0.01
+}
+
 
 def save_result(candidates: List[dict]) -> None:
     now = str(datetime.now())
