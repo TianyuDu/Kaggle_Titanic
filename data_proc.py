@@ -24,6 +24,7 @@ def create_features(raw: pd.DataFrame):
     df = df.fillna({"Embarked": "S"})
     embarked_mapping = {'S': 1, 'C': 2, 'Q': 3}
     df['Embarked'] = df['Embarked'].map(embarked_mapping)
+    # df['family_size'] = df['SibSp'] + df['Parch']
     return df
 
 
