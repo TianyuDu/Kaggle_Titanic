@@ -1,0 +1,16 @@
+{'param': {'epochs': 100, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.1, 'lr': 0.03}, 'test_auc': 0.5, 'test_acc': 0.6293706}
+{'param': {'epochs': 100, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.1, 'lr': 0.03}, 'test_auc': 0.5, 'test_acc': 0.6293706}
+{'param': {'epochs': 100, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.2, 'lr': 0.03}, 'test_auc': 0.8046121593291405, 'test_acc': 0.7692308}
+{'param': {'epochs': 100, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.2, 'lr': 0.03}, 'test_auc': 0.8439203354297693, 'test_acc': 0.7972028}
+{'param': {'epochs': 50, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.2, 'lr': 0.03}, 'test_auc': 0.8440251572327044, 'test_acc': 0.8181818}
+{'param': {'epochs': 50, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.1, 'lr': 0.03}, 'test_auc': 0.8517819706498952, 'test_acc': 0.8111888}
+{'param': {'epochs': 50, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.1, 'lr': 0.01}, 'test_auc': 0.8576519916142558, 'test_acc': 0.8041958}
+{'param': {'epochs': 50, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.2, 'lr': 0.03}, 'test_auc': 0.8721174004192873, 'test_acc': 0.7622378}
+{'param': {'epochs': 100, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.1, 'lr': 0.01}, 'test_auc': 0.8735849056603774, 'test_acc': 0.8111888}
+{'param': {'epochs': 100, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.1, 'lr': 0.01}, 'test_auc': 0.8784067085953879, 'test_acc': 0.8321678}
+{'param': {'epochs': 50, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.2, 'lr': 0.01}, 'test_auc': 0.8794549266247379, 'test_acc': 0.8111888}
+{'param': {'epochs': 100, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.2, 'lr': 0.01}, 'test_auc': 0.879664570230608, 'test_acc': 0.8111888}
+{'param': {'epochs': 50, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.2, 'lr': 0.01}, 'test_auc': 0.8813417190775681, 'test_acc': 0.8041958}
+{'param': {'epochs': 50, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.1, 'lr': 0.01}, 'test_auc': 0.8823899371069183, 'test_acc': 0.8251748}
+{'param': {'epochs': 50, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.1, 'lr': 0.03}, 'test_auc': 0.8839622641509434, 'test_acc': 0.8041958}
+{'param': {'epochs': 100, 'num_features': 6, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.2, 'lr': 0.01}, 'test_auc': 0.889517819706499, 'test_acc': 0.7762238}
