@@ -1,0 +1,4 @@
+{'param': {'epochs': 50, 'num_features': 7, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.1, 'lr': 0.01}, 'test_auc': 0.8673835125448028, 'test_acc': 0.8111888}
+{'param': {'epochs': 50, 'num_features': 7, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.1, 'lr': 0.01}, 'test_auc': 0.8749502190362406, 'test_acc': 0.7832168}
+{'param': {'epochs': 50, 'num_features': 7, 'num_classes': 2, 'neurons': (64, 128), 'drop_out': 0.1, 'lr': 0.03}, 'test_auc': 0.9193548387096775, 'test_acc': 0.7062937}
+{'param': {'epochs': 50, 'num_features': 7, 'num_classes': 2, 'neurons': (64, 128, 256), 'drop_out': 0.1, 'lr': 0.03}, 'test_auc': 0.919952210274791, 'test_acc': 0.8181818}
