@@ -60,7 +60,7 @@ def save_result(candidates: List[dict]) -> None:
         f.writelines(
             [str(r) + "\n" for r in candidates]
         )
-    print(f"Reseult written to .//hps/{user_name}_{now}.txt")
+    print(f"Reseult written to ./hps/{user_name}_{now}.txt")
 
 
 if __name__ == "__main__":
