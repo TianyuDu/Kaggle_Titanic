@@ -58,7 +58,7 @@ class Classifier():
         self.model.fit(
             X_train, y_train,
             validation_split=validation_split,
-            verbose=0,
+            verbose=1 if self.v else 0,
             epochs=self.epochs
         )
 
