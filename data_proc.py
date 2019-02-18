@@ -72,7 +72,7 @@ def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
 def parse_test_set(df: pd.DataFrame) -> np.ndarray:
     df = create_features(df)
     df.drop(columns=["Name"], inplace=True)
-    return df.values
+    return df.values, df
 
 
 if __name__ == "__main__":
