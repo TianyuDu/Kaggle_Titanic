@@ -43,14 +43,20 @@ PARAM_SRC = {
     "lr": [0.01, 0.03, 0.1, 0.3]
 }
 
-PARAM_SINGLE = {
-    "epochs": 50,
+PARAM_SRC_2 = {
+    "epochs": [100 * x for x in range(2, 10)],
     "num_features": 7,
     "num_classes": 2,  # number of label classes
-    "neurons": (64, 128),
-    "drop_out": 0.1,
-    "lr": 0.01
+    "neurons": [
+        (32, 64, 128),
+        (64, 64, 128),
+        (512, 1024, 2048)
+    ],
+    "drop_out": [0.1 * x for x in range(1, 2)],
+    "lr": [0.01, 0.03, 0.1, 0.3]
 }
+
+PARAM_SINGLE = {'epochs': 500, 'num_features': 7, 'num_classes': 2, 'neurons': (512, 512, 512), 'drop_out': 0.1, 'lr': 0.01}
 
 
 def save_result(candidates: List[dict]) -> None:
@@ -69,9 +75,9 @@ if __name__ == "__main__":
         data_proc.load_data("./data/train.csv"))
 
     (X_train, X_test, y_train, y_test) = train_test_split(
-        X, y, test_size=0.2, shuffle=True)
+        X, y, test_size=0.2, shuffle=False)
 
-    PARAM_SET = model_selection.gen_hparam_set(PARAM_SRC_TEST)
+    PARAM_SET = model_selection.gen_hparam_set(PARAM_SINGLE)
     random.shuffle(PARAM_SET)
     candidates = model_selection.grid_search(
         PARAM_SET,
