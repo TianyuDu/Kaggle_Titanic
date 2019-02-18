@@ -18,11 +18,12 @@ import model_builder
 
 
 PARAM = {
-    'epochs': 150,
+    'epochs': 50,
     'num_features': 7,
     'num_classes': 2,
-    'neurons': (512, 512, 512),
-    'drop_out': 0.1, 'lr': 0.01
+    'neurons': (128, 256),
+    'drop_out': 0.1,
+    'lr': 0.01
 }
 
 
@@ -32,7 +33,7 @@ if __name__ == "__main__":
     (X_train, X_test, y_train, y_test) = train_test_split(
         X, y, test_size=0.2, shuffle=False)
 
-    X_pred = data_proc.parse_test_set(
+    X_pred, X_pred_df = parse_test_set(
         data_proc.load_data("./data/test.csv"))
 
     pred_set = pd.read_csv("./data/test.csv")
