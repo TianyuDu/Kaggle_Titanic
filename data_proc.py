@@ -33,9 +33,10 @@ def create_features(raw: pd.DataFrame):
     title_mapping = {"Rare": 1, "Miss": 2, "Mrs": 3, "Mr": 4}
     df['Title'] = df['Title'].map(title_mapping)
     # df['Family_Size'] = df['SibSp'] + df['Parch']
-    df = discrete_age(df)
-    df = df.dropna()
+    # df = discrete_age(df)
+    # df = df.dropna()
     return df
+
 
 def discrete_age(dataset: pd.DataFrame):
     dataset.loc[dataset["Age"] <= 9, "Age"] = 0
@@ -46,23 +47,32 @@ def discrete_age(dataset: pd.DataFrame):
     dataset.loc[dataset["Age"] > 39, "Age"] = 4
     return dataset
 
+
 def change_title(dataset: pd.DataFrame):
-    dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col','Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
+    dataset['Title'] = dataset['Title'].replace(
+        ['Lady', 'Countess', 'Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
     dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')
     dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
     dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
     return dataset
-    
+
 
 def parse_data(df: pd.DataFrame) -> (np.ndarray, np.ndarray):
     """
     Extract data into feature array and target array.
     """
     df = create_features(df)
+    df.dropna(inplace=True)
     X = df.drop(columns=["Survived", "Name"]).values.astype(np.float32)
     y = df["Survived"].values
     y = y.reshape(-1, 1)
     return X, y
+
+
+def parse_test_set(df: pd.DataFrame) -> np.ndarray:
+    df = create_features(df)
+    df.drop(columns=["Name"], inplace=True)
+    return df.values
 
 
 if __name__ == "__main__":
