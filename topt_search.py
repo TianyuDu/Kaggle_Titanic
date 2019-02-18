@@ -16,12 +16,12 @@ if __name__ == "__main__":
         X, y, test_size=0.2, shuffle=True)
 
     pipeline_optimizer = TPOTClassifier(
-        generations=10,
-        population_size=20,
+        generations=5,
+        population_size=50,
         cv=5,
         verbosity=2
     )
 
     pipeline_optimizer.fit(X_train, y_train)
-    # print(pipeline_optimizer.score(X_test, y_test))
+    print(pipeline_optimizer.score(X_test, y_test))
     # pipeline_optimizer.export("tpot_test.py")
